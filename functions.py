@@ -3,6 +3,10 @@ import time
 from datetime import date, timedelta
 from dateutil import parser
 import pandas as pd
+from IPython.display import display
+from email.mime.text import MIMEText
+from email.mime.application import MIMEApplication
+from email.mime.multipart import MIMEMultipart
 from email.message import EmailMessage
 import ssl
 import smtplib
@@ -33,49 +37,87 @@ long=30
   
 
 
+ 
+
+    
+    
+    
+    
+
 
 def send_emails(data, recipients ):
+    
+
     global msg
-    if len(recipients) > 0 :
-        for recipient  in  recipients : 
-            send_email(data,recipient)
-        msg='Emails Sent Successfully'   
-    else:
-        msg='No Emails found!'  
+    email_sender = 'test.email.group3@gmail.com'
+    password = 'ojnertaqnwmklank'
+#     recipients = ['mikdad.kanbar1@gmail.com' ] 
+    emaillist = [elem.strip().split(',') for elem in recipients]
+    email_msg = MIMEMultipart()
+    email_msg['Subject'] = "Time Tracking Report"
+    email_msg['From'] = 'test.email.group3@gmail.com'
+    
+    df = pd.DataFrame(data = data[1:],        columns = data[0])
+                          
+     
+    html = f"""\
+    <html>
+      <head></head>
+      <body>
+      This is your history report requested on {current_date(), current_time()}
+        {   df  . to_html()}
+      </body>
+    </html>
+    """ 
+
+    part1 = MIMEText(html, 'html')
+    email_msg.attach(part1)
+    
+    with smtplib.SMTP_SSL('smtp.gmail.com', 465) as smtp:
+                            smtp.login(email_sender, password)
+                            smtp.sendmail(recipients, recipients , email_msg.as_string())
+    msg='Email Sent Successfully'  
+
+            
+    # def send_email   (data, recipient  ):
+    #     global msg
+    #     if type ( data ) == list and len(data) > 2 :
+    #             #converting it to DataFrame , first list would be the header
+    #             data = pd.DataFrame(data[1:], columns = data[0])
+
+    #     email_sender = 'test.email.group3@gmail.com'
+    #     password = 'ojnertaqnwmklank'
+    #     subject = 'TimeTrackingApp Report'
+    #     body = f'''
+
+    #     This is a report requested on {current_date()}
+
+
+    #     {data}'''
 
         
-    def send_email   (data, recipient  ):
-        global msg
-        if type ( data ) == list and len(data) > 2 :
-                #converting it to DataFrame , first list would be the header
-                data = pd.DataFrame(data[1:], columns = data[0])
 
-        email_sender = 'test.email.group3@gmail.com'
-        password = 'ojnertaqnwmklank'
-        subject = 'TimeTrackingApp Report'
-        body = f'''
+    #     em = EmailMessage()
 
-        This is a report requested on {current_date()}
+    #     em['From'] = email_sender
+    #     em['To'] = recipient
+    #     em['Subject'] = subject
+    #     em.set_content(body)
 
+    #     context = ssl.create_default_context()
 
-        {data}'''
+    #     with smtplib.SMTP_SSL('smtp.gmail.com', 465, context=context) as smtp:
+    #                     smtp.login(email_sender, password)
+    #                     smtp.sendmail(email_sender, recipient , em.as_string())
+    #     msg='Email Sent Successfully'           
 
-        
-
-        em = EmailMessage()
-
-        em['From'] = email_sender
-        em['To'] = recipient
-        em['Subject'] = subject
-        em.set_content(body)
-
-        context = ssl.create_default_context()
-
-        with smtplib.SMTP_SSL('smtp.gmail.com', 465, context=context) as smtp:
-                        smtp.login(email_sender, password)
-                        smtp.sendmail(email_sender, recipient , em.as_string())
-        msg='Email Sent Successfully'           
-        
+    # global msg
+    # if len(recipients) > 0 :
+    #     for recipient  in  recipients : 
+    #         send_email(data,recipient)
+    #     msg='Emails Sent Successfully'   
+    # else:
+    #     msg='No Emails found!'      
 
     
 
@@ -152,7 +194,7 @@ def current_time() :
 
 def current_date():
        today = date.today()
-       return  today.strftime("%d/%m/%Y") 
+       return  today.strftime("%d %B, %Y")
 
 
 def timer (t) : 
@@ -446,7 +488,21 @@ class User  :
 
                     if  (date_point ==0 ) or (current_list[-1] !='date' and parser.parse  (current_list[-1]) > date_point )   :
                         if  current_list[1]!=0  : 
-                         all_sessions.append(current_list)
+                            #now it from here until we append, it is all optional ,
+                            # # changing numbers into readable text :
+                            if current_list[1] ==1 :
+                                current_list[1]='Yes'
+                            else:   
+                                 current_list[1]='Skipped' 
+                            if      current_list[3]==0 :
+                                current_list[3]='...'
+                            elif  current_list[3]==1 :
+                                 current_list[3]='Yes'
+                            else:
+                                current_list[3]='No'     
+
+ 
+                            all_sessions.append(current_list)
                     
                 
             #filtering all sessions : 
@@ -493,9 +549,6 @@ class User  :
         if isinstance (current, Current) : 
             current.session[4]=current_time()  #start at
             
-            # timer(current.session[3]) #start timing
-            
-            #here : there's a chance of a skip :
             
             if not skipped : 
                 current.session[0]=1 #done
@@ -504,11 +557,10 @@ class User  :
                 current.session[-1]= current_date()  #date
                 current.update_in_user()
             
-#         if current.session_name=='long_break'  : 
-#             print ('yes it is long break')
-#             self.add_promodoro (current.project, current.subject, current.task)
+
     
     def skip  (self):
+                global msg
                 skipped=True
         #first let's update the current session : make it -1 instead of 0 :
                 current.session[0]=-1 #skipped
@@ -521,7 +573,8 @@ class User  :
                 #if start is not yet registered > he skipped immediately
                 current.session[4]=current_time()
                 current.update_in_user()
-        #now : remove the current timer and return to the prev screen
+                msg='Session Skipped!'
+        
         
     def label_not_finished (self) :   
         global msg
@@ -569,18 +622,3 @@ class Current():
         user1.update()
         print ('updated')
         
-# login('m@gmail.com')
-# user1.add_recipient('ddf@.com')
-# print (user1.recipients)
-# print (msg)
-# # print (user1.data)
-# print ( user1.get_projects())       
-# user1.delete_project('Mathtt')
-# print ( user1.get_projects()) 
-# user1.add_project('Mathtt')
-# print ( user1.get_subjects('Mathtt'))  
-# print (user1.history)
-
-# user1.get_history('Math', 'Stat')
-# print (user1.history)
-# # print(user1.data)

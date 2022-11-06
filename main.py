@@ -56,7 +56,7 @@ class First(QDialog):
             #now sign up : 
         functions.signup(email,name)
         self.error_msg.setText(functions.msg) 
-         
+        self.email_input.setText(email) 
 
 
     
@@ -93,16 +93,10 @@ class Promodoro(QDialog):
         while t:
             mins, secs = divmod(t, 60)
             timer2 = '{:02d}:{:02d}'.format(mins, secs)
-            # msg=f'timer, end="\r"'
-            # print (timer, end="\r")
-           
             time.sleep(0.001)
             t -= 1
-            
-            # self.lcdNumber.display(timer)
             self.msg_label.setText(timer2  )
             QApplication.processEvents()
-
         self.msg_label.setText('Finished!'  )
 
 
@@ -110,18 +104,19 @@ class Promodoro(QDialog):
                     task = self.task_input.text()
                     #changing task only if it is not a break
                     if  task !='' and task != ' ' and  functions.current.session_name not in ['break1', 'break2', 'break3','long_break']:
-                        functions.current.session[1]=task
-                        functions.current.update_in_user()
-                        self.msg_label.setText('Task added!')
-                        self.task_label.setText(task)
+                        #now make sure that the current session is not started yet,
+                        # because you can't add a task if the session was done before!
+                        if functions.current.session[0] ==0 : 
+                            functions.current.session[1]=task
+                            functions.current.update_in_user()
+                            self.msg_label.setText('Task added!')
+                            self.task_label.setText(task)
                     else:
                         functions.msg=''
                     # self.start()
 
     def unfinished (self) : 
-        # if main2.current.session_name not in ['break1', 'break2', 'break3','long_break']:
-            # main2.current.session[2]=-1
-            # main2.current.update_in_user()
+        
             functions.user1. label_not_finished ()
             self.msg_label.setText(functions.msg)
 
@@ -136,22 +131,23 @@ class Promodoro(QDialog):
                     
                     functions.user1.start_timing_session (functions.current)
                     self.timer(functions.current.session[3])
-                    # self.go_to_main()
                     
-    def update_label (self, s) :
-        pass
+                    
+   
 
 
                 
     def skip (self):
-        #if msg_label.Text != 'finished!' : ??
-        functions.user1.skip()     
-        self.go_to_main()
-        # msg_label
         
-        # skip_Button
+        functions.user1.skip() 
+          
+        self.go_to_main()
+        
+        
+       
 
 class Main(QDialog):
+    
     def __init__(self):
         super(Main,self).__init__()
         loadUi("./UI/main.ui",self)
@@ -181,8 +177,10 @@ class Main(QDialog):
         self.email_history_Button.clicked.connect(self.email_history)
 
     def email_history (self):
-        functions.send_email(functions.user1.history , functions.user1.recipients[0])
-        self.msgLabel.setText(functions.msg)
+        if len(functions.user1.history ) > 2 : 
+
+            functions.send_emails(functions.user1.history , functions.user1.recipients[0])
+            self.msgLabel.setText(functions.msg)
 
     def add_recipient  (self) : 
             recipient =self.recipient_input.text()
@@ -285,17 +283,14 @@ class Main(QDialog):
         
 
     def show_history_press (self) :
-        # del main2.user1
-        # main2.login(Email)
+        
         history_list=[]
         subject=self.comboSubject.currentText()
         project=self.comboProject.currentText()
         before_days=self.before_days.currentText()
         history_list= functions.user1.get_history (project, subject, before_days)
 
-        # del main2.user1
-        # main2.login(Email)
-        # print  (history_list)
+       
         self.load_data(history_list)
 
     def load_data(self, lists)  :
