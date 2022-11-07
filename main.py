@@ -182,9 +182,15 @@ class Main(QDialog):
         subject3=self.comboSubject.currentText()
         project3=self.comboProject.currentText()
         if functions.user1.get_next_session(project3,subject3 ) : 
-            functions.visualize( functions.current.session_name)
+            s=['start', 'study1',   'break1' ,  'study2', 'break2',  'study3' , 'break3','study4' , 'long_break', 'finish' ]
+            for session in s[:s.index(functions.current.session_name)+1] :
+                functions.visualize( session)
+                time.sleep(0.2)
+                self.msgLabel.setText(functions.msg)
+                QApplication.processEvents()
 
-        self.msgLabel.setText(functions.msg)
+
+        
 
 
 
