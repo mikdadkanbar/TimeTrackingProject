@@ -36,6 +36,43 @@ long=30
 
   
 
+def visualize(name) :
+    #this would take a number from 1 to 9( depending on the sessions completed )
+    #and  return a progress bar that represent percentage of how much is done in the currenct session : depending on that number
+    # ['study1', , 'break1' ,  'study2', 'break2',  study3 , 'break3','study4' , long_break']
+    
+    #total time (100% of the promodoro) should be : 25+5+25+5+25+5+25+30 = 145 minutes
+    #Example : visualize (3) >> should return the sketch : meaning : he has completed s1 and b1 and now he is standing on s3
+    #example : visualize (1) >> means you have not started the promodoro > you are on s1
+    #example : visualize (9) >> you have done all >> the man should be standing on lastpoint (at 9) █
+    
+     
+ 
+             
+ 
+    def printProgressBar (iteration, total, prefix = '', suffix = '', decimals = 1, length = 100, fill = '>', printEnd = "\r"):
+            percent = ("{0:." + str(decimals) + "f}").format(100 * (iteration / float(total)))
+            filledLength = int(length * iteration // total)
+            bar = fill * filledLength + '>>웃' +'-' * (length - filledLength)
+            return  f'\r{prefix} |{bar}| {percent}% {suffix}'
+            # Print New Line on Complete
+            if iteration == total: 
+                print()
+    
+    
+    global msg     
+    
+    s=['start', 'study1',   'break1' ,  'study2', 'break2',  'study3' , 'break3','study4' , 'long_break', 'finish' ]
+    p=[0,25,5,25,5,25,5,25,30]
+    index_done = s.index(name)  
+    sum_done=sum (p[: index_done] )
+
+    items = list(range(0,145))
+    l = len(items) 
+    if name=='finish' : 
+      name='study1'
+ 
+    msg= printProgressBar( sum_done , l, prefix = 'Progress:', suffix = f'Completed. Next >> {name}', length = 50)
 
  
 
@@ -622,3 +659,4 @@ class Current():
         user1.update()
         print ('updated')
         
+# print( visualize ('break1'))

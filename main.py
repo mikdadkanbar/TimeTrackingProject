@@ -147,7 +147,7 @@ class Promodoro(QDialog):
        
 
 class Main(QDialog):
-    
+
     def __init__(self):
         super(Main,self).__init__()
         loadUi("./UI/main.ui",self)
@@ -160,6 +160,7 @@ class Main(QDialog):
          
          
         self.comboProject.activated.connect(self.load_items  )
+        self.comboSubject.activated.connect(self.show_progress)
         self.showHistoryButton.clicked.connect(self.show_history_press )
 
         self.backButton.clicked.connect(self.go_first )
@@ -175,6 +176,17 @@ class Main(QDialog):
         self.delete_project_Button.clicked.connect(self.delete_project )
         
         self.email_history_Button.clicked.connect(self.email_history)
+
+    def show_progress(self):
+
+        subject3=self.comboSubject.currentText()
+        project3=self.comboProject.currentText()
+        if functions.user1.get_next_session(project3,subject3 ) : 
+            functions.visualize( functions.current.session_name)
+
+        self.msgLabel.setText(functions.msg)
+
+
 
     def email_history (self):
         if len(functions.user1.history ) > 2 : 
