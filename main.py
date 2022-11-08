@@ -31,7 +31,7 @@ class First(QDialog):
         self.signup_button.clicked.connect(self.signup_press)
        
         
-        self.goToMain.clicked.connect(self.go_to_main)
+        
        
     
     def login_press(self) :
@@ -116,7 +116,7 @@ class Promodoro(QDialog):
                     # self.start()
 
     def unfinished (self) : 
-        
+        if functions.current.session[1] !='task' and  functions.current.session[0] !=0 and   functions.current.session_name not in ['break1', 'break2', 'break3','long_break']:
             functions.user1. label_not_finished ()
             self.msg_label.setText(functions.msg)
 
@@ -338,8 +338,8 @@ UI =First() # This line determines which screen you will load at first
 
 widget = QtWidgets.QStackedWidget()
 widget.addWidget(UI)
-widget.setFixedWidth(1800)
-widget.setFixedHeight(1600)
+widget.setFixedWidth(2250)
+widget.setFixedHeight(900)
 widget.setWindowTitle("Time Tracking App")
 widget.show()
 sys.exit(app.exec_())

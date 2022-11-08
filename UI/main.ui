@@ -6,384 +6,481 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1995</width>
-    <height>1263</height>
+    <width>2183</width>
+    <height>1074</height>
    </rect>
+  </property>
+  <property name="cursor">
+   <cursorShape>ArrowCursor</cursorShape>
   </property>
   <property name="windowTitle">
    <string>Dialog</string>
   </property>
-  <widget class="QTableWidget" name="tableWidget">
-   <property name="geometry">
-    <rect>
-     <x>0</x>
-     <y>750</y>
-     <width>1121</width>
-     <height>511</height>
-    </rect>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">background : rgb(255, 255, 255)</string>
-   </property>
-   <column>
-    <property name="text">
-     <string>name_of_session</string>
-    </property>
-   </column>
-   <column>
-    <property name="text">
-     <string>done</string>
-    </property>
-   </column>
-   <column>
-    <property name="text">
-     <string>task</string>
-    </property>
-   </column>
-   <column>
-    <property name="text">
-     <string>task_done</string>
-    </property>
-   </column>
-   <column>
-    <property name="text">
-     <string>normalTime</string>
-    </property>
-   </column>
-   <column>
-    <property name="text">
-     <string>start_time</string>
-    </property>
-   </column>
-   <column>
-    <property name="text">
-     <string>finish_time</string>
-    </property>
-   </column>
-   <column>
-    <property name="text">
-     <string>time_consumed</string>
-    </property>
-   </column>
-   <column>
-    <property name="text">
-     <string>date</string>
-    </property>
-   </column>
-  </widget>
-  <widget class="QComboBox" name="comboProject">
-   <property name="geometry">
-    <rect>
-     <x>10</x>
-     <y>510</y>
-     <width>191</width>
-     <height>91</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QComboBox" name="comboSubject">
-   <property name="geometry">
-    <rect>
-     <x>210</x>
-     <y>510</y>
-     <width>201</width>
-     <height>91</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="showHistoryButton">
-   <property name="geometry">
-    <rect>
-     <x>420</x>
-     <y>650</y>
-     <width>151</width>
-     <height>91</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Show History</string>
-   </property>
-  </widget>
-  <widget class="QLabel" name="label">
-   <property name="geometry">
-    <rect>
-     <x>30</x>
-     <y>460</y>
-     <width>111</width>
-     <height>31</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Choose a project</string>
-   </property>
-  </widget>
-  <widget class="QLabel" name="label_2">
-   <property name="geometry">
-    <rect>
-     <x>220</x>
-     <y>450</y>
-     <width>121</width>
-     <height>51</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Choose a subject</string>
-   </property>
-  </widget>
-  <widget class="QLabel" name="msgLabel">
-   <property name="geometry">
-    <rect>
-     <x>40</x>
-     <y>40</y>
-     <width>1451</width>
-     <height>81</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <pointsize>8</pointsize>
-    </font>
-   </property>
-   <property name="text">
-    <string>MSG</string>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="backButton">
-   <property name="geometry">
-    <rect>
-     <x>20</x>
-     <y>10</y>
-     <width>65</width>
-     <height>20</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>back</string>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="start_promodoro_Button">
-   <property name="geometry">
-    <rect>
-     <x>580</x>
-     <y>650</y>
-     <width>151</width>
-     <height>91</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Start Promodoro</string>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="delete_project_Button">
-   <property name="geometry">
-    <rect>
-     <x>20</x>
-     <y>650</y>
-     <width>181</width>
-     <height>91</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Delete This Project</string>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="delete_subject_Button">
-   <property name="geometry">
-    <rect>
-     <x>220</x>
-     <y>650</y>
-     <width>181</width>
-     <height>91</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Delete This Subject</string>
-   </property>
-  </widget>
-  <widget class="QGroupBox" name="groupBox">
-   <property name="geometry">
-    <rect>
-     <x>950</x>
-     <y>250</y>
-     <width>311</width>
-     <height>391</height>
-    </rect>
-   </property>
-   <property name="title">
-    <string>Add Subject</string>
-   </property>
-   <widget class="QComboBox" name="comboProject2">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>80</y>
-      <width>271</width>
-      <height>81</height>
-     </rect>
-    </property>
-   </widget>
-   <widget class="QLineEdit" name="subjectText">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>170</y>
-      <width>261</width>
-      <height>101</height>
-     </rect>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="addSubjecttButton">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>280</y>
-      <width>271</width>
-      <height>91</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Add New Subject</string>
-    </property>
-   </widget>
-  </widget>
-  <widget class="QGroupBox" name="groupBox_2">
-   <property name="geometry">
-    <rect>
-     <x>640</x>
-     <y>250</y>
-     <width>311</width>
-     <height>391</height>
-    </rect>
-   </property>
-   <property name="title">
-    <string>Add Project</string>
-   </property>
-   <widget class="QLineEdit" name="projectText">
-    <property name="geometry">
-     <rect>
-      <x>20</x>
-      <y>30</y>
-      <width>181</width>
-      <height>61</height>
-     </rect>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="addProjectButton">
-    <property name="geometry">
-     <rect>
-      <x>20</x>
-      <y>110</y>
-      <width>181</width>
-      <height>101</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Add New Project</string>
-    </property>
-   </widget>
-  </widget>
-  <widget class="QGroupBox" name="groupBox_3">
-   <property name="geometry">
-    <rect>
-     <x>1520</x>
-     <y>20</y>
-     <width>471</width>
-     <height>201</height>
-    </rect>
-   </property>
-   <property name="title">
-    <string>Add / Delete recipient</string>
-   </property>
-   <widget class="QComboBox" name="emails_combo">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>31</y>
-      <width>251</width>
-      <height>31</height>
-     </rect>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="delete_r_Button">
-    <property name="geometry">
-     <rect>
-      <x>280</x>
-      <y>20</y>
-      <width>151</width>
-      <height>41</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Delete This recipient</string>
-    </property>
-   </widget>
-   <widget class="QLineEdit" name="recipient_input">
-    <property name="geometry">
-     <rect>
-      <x>20</x>
-      <y>80</y>
-      <width>311</width>
-      <height>51</height>
-     </rect>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="add_r_Button">
-    <property name="geometry">
-     <rect>
-      <x>40</x>
-      <y>130</y>
-      <width>291</width>
-      <height>61</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Add New Recipient</string>
-    </property>
-   </widget>
-  </widget>
-  <widget class="QPushButton" name="email_history_Button">
-   <property name="geometry">
-    <rect>
-     <x>750</x>
-     <y>650</y>
-     <width>221</width>
-     <height>91</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Email History</string>
-   </property>
-  </widget>
-  <widget class="QComboBox" name="before_days">
-   <property name="geometry">
-    <rect>
-     <x>460</x>
-     <y>510</y>
-     <width>171</width>
-     <height>91</height>
-    </rect>
-   </property>
-   <item>
-    <property name="text">
-     <string>7</string>
-    </property>
+  <property name="styleSheet">
+   <string notr="true">background : #444444  ;color : rgb(255, 255, 255)</string>
+  </property>
+  <layout class="QGridLayout" name="gridLayout_5">
+   <item row="1" column="1" colspan="3">
+    <widget class="QLabel" name="msgLabel">
+     <property name="font">
+      <font>
+       <pointsize>14</pointsize>
+       <weight>75</weight>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="text">
+      <string>MSG</string>
+     </property>
+    </widget>
    </item>
-   <item>
-    <property name="text">
-     <string>30</string>
-    </property>
+   <item row="2" column="1" colspan="3">
+    <widget class="Line" name="line">
+     <property name="font">
+      <font>
+       <pointsize>14</pointsize>
+       <weight>75</weight>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="lineWidth">
+      <number>5000</number>
+     </property>
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+    </widget>
    </item>
-   <item>
-    <property name="text">
-     <string>90</string>
-    </property>
+   <item row="5" column="0" colspan="4">
+    <layout class="QGridLayout" name="gridLayout_4">
+     <item row="3" column="0">
+      <widget class="QLabel" name="label_2">
+       <property name="font">
+        <font>
+         <family>Century Gothic</family>
+         <pointsize>10</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="text">
+        <string>Choose a subject</string>
+       </property>
+      </widget>
+     </item>
+     <item row="4" column="2">
+      <widget class="QPushButton" name="showHistoryButton">
+       <property name="font">
+        <font>
+         <family>Century Gothic</family>
+         <pointsize>10</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="text">
+        <string>Show History</string>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="1">
+      <widget class="QComboBox" name="comboProject">
+       <property name="font">
+        <font>
+         <family>Century Gothic</family>
+         <pointsize>10</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
+        </font>
+       </property>
+      </widget>
+     </item>
+     <item row="3" column="2">
+      <widget class="QPushButton" name="delete_subject_Button">
+       <property name="font">
+        <font>
+         <family>Century Gothic</family>
+         <pointsize>10</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="text">
+        <string>Delete This Subject</string>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="2">
+      <widget class="QPushButton" name="delete_project_Button">
+       <property name="font">
+        <font>
+         <family>Century Gothic</family>
+         <pointsize>10</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="text">
+        <string>Delete This Project</string>
+       </property>
+      </widget>
+     </item>
+     <item row="3" column="1">
+      <widget class="QComboBox" name="comboSubject">
+       <property name="font">
+        <font>
+         <family>Century Gothic</family>
+         <pointsize>10</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
+        </font>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="0" colspan="3">
+      <widget class="QLabel" name="label_7">
+       <property name="text">
+        <string>________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________</string>
+       </property>
+      </widget>
+     </item>
+     <item row="4" column="3">
+      <widget class="QPushButton" name="email_history_Button">
+       <property name="font">
+        <font>
+         <family>Century Gothic</family>
+         <pointsize>10</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="text">
+        <string>Email History</string>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="0">
+      <widget class="QLabel" name="label">
+       <property name="font">
+        <font>
+         <family>Century Gothic</family>
+         <pointsize>10</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="text">
+        <string>Choose a project</string>
+       </property>
+      </widget>
+     </item>
+     <item row="4" column="1">
+      <widget class="QComboBox" name="before_days">
+       <property name="font">
+        <font>
+         <family>Century Gothic</family>
+         <pointsize>10</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
+        </font>
+       </property>
+       <item>
+        <property name="text">
+         <string>7</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>30</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>90</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>All</string>
+        </property>
+       </item>
+      </widget>
+     </item>
+     <item row="7" column="0" colspan="4">
+      <widget class="QTableWidget" name="tableWidget">
+       <property name="font">
+        <font>
+         <pointsize>12</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background : rgb(152, 152, 152)  ;color :  rgb(74, 74, 74)</string>
+       </property>
+       <column>
+        <property name="text">
+         <string>name_of_session</string>
+        </property>
+       </column>
+       <column>
+        <property name="text">
+         <string>done</string>
+        </property>
+       </column>
+       <column>
+        <property name="text">
+         <string>task</string>
+        </property>
+       </column>
+       <column>
+        <property name="text">
+         <string>task_done</string>
+        </property>
+       </column>
+       <column>
+        <property name="text">
+         <string>normalTime</string>
+        </property>
+       </column>
+       <column>
+        <property name="text">
+         <string>start_time</string>
+        </property>
+       </column>
+       <column>
+        <property name="text">
+         <string>finish_time</string>
+        </property>
+       </column>
+       <column>
+        <property name="text">
+         <string>time_consumed</string>
+        </property>
+       </column>
+       <column>
+        <property name="text">
+         <string>date</string>
+        </property>
+       </column>
+      </widget>
+     </item>
+     <item row="4" column="0">
+      <widget class="QLabel" name="label_5">
+       <property name="font">
+        <font>
+         <family>Century Gothic</family>
+         <pointsize>10</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="text">
+        <string>In the last .. days :</string>
+       </property>
+      </widget>
+     </item>
+     <item row="6" column="1" colspan="3">
+      <widget class="QPushButton" name="start_promodoro_Button">
+       <property name="font">
+        <font>
+         <family>Century Gothic</family>
+         <pointsize>18</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="cursor">
+        <cursorShape>OpenHandCursor</cursorShape>
+       </property>
+       <property name="text">
+        <string>Start Promodoro</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
    </item>
-   <item>
-    <property name="text">
-     <string>All</string>
-    </property>
+   <item row="3" column="2">
+    <layout class="QGridLayout" name="gridLayout_2">
+     <item row="2" column="0">
+      <widget class="QLineEdit" name="subjectText">
+       <property name="font">
+        <font>
+         <family>Century Gothic</family>
+         <pointsize>10</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
+        </font>
+       </property>
+      </widget>
+     </item>
+     <item row="3" column="0">
+      <widget class="QPushButton" name="addSubjecttButton">
+       <property name="font">
+        <font>
+         <family>Century Gothic</family>
+         <pointsize>10</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="text">
+        <string>Add New Subject</string>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="0">
+      <widget class="QComboBox" name="comboProject2">
+       <property name="font">
+        <font>
+         <family>Century Gothic</family>
+         <pointsize>10</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
+        </font>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="0">
+      <widget class="QLabel" name="label_4">
+       <property name="font">
+        <font>
+         <family>Century Gothic</family>
+         <pointsize>10</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="text">
+        <string>Adding New Subject :</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
    </item>
-  </widget>
+   <item row="3" column="1">
+    <layout class="QGridLayout" name="gridLayout_3">
+     <item row="2" column="1">
+      <widget class="QLineEdit" name="projectText">
+       <property name="font">
+        <font>
+         <family>Century Gothic</family>
+         <pointsize>10</pointsize>
+        </font>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="1">
+      <widget class="QLabel" name="label_3">
+       <property name="font">
+        <font>
+         <family>Century Gothic</family>
+         <pointsize>10</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="text">
+        <string>Adding New Project : </string>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="0">
+      <widget class="QPushButton" name="backButton">
+       <property name="text">
+        <string>back</string>
+       </property>
+      </widget>
+     </item>
+     <item row="3" column="1">
+      <widget class="QPushButton" name="addProjectButton">
+       <property name="font">
+        <font>
+         <family>Century Gothic</family>
+         <pointsize>10</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="text">
+        <string>Add New Project</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item row="3" column="3">
+    <layout class="QGridLayout" name="gridLayout">
+     <item row="5" column="0">
+      <widget class="QPushButton" name="add_r_Button">
+       <property name="font">
+        <font>
+         <family>Century Gothic</family>
+         <pointsize>10</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="text">
+        <string>Add New Recipient</string>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="0">
+      <widget class="QComboBox" name="emails_combo">
+       <property name="font">
+        <font>
+         <family>Century Gothic</family>
+         <pointsize>10</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
+        </font>
+       </property>
+      </widget>
+     </item>
+     <item row="4" column="0">
+      <widget class="QLineEdit" name="recipient_input">
+       <property name="font">
+        <font>
+         <family>Century Gothic</family>
+         <pointsize>10</pointsize>
+        </font>
+       </property>
+      </widget>
+     </item>
+     <item row="3" column="0">
+      <widget class="QPushButton" name="delete_r_Button">
+       <property name="font">
+        <font>
+         <family>Century Gothic</family>
+         <pointsize>10</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="text">
+        <string>Delete This recipient</string>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="0">
+      <widget class="QLabel" name="label_6">
+       <property name="font">
+        <font>
+         <family>Century Gothic</family>
+         <pointsize>10</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="text">
+        <string>Adding/ deleting recipients :</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+  </layout>
  </widget>
  <resources/>
  <connections/>
